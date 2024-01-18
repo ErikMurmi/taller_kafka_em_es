@@ -9,18 +9,6 @@ const kafka = new Kafka({
     brokers: ['localhost:9092']
 });
 
-const producer = kafka.producer();
-app.post('/publish', async (req, res) => {
-    const message = req.body;
-    await producer.send({
-        topic: 'sports',
-        messages: [
-            { value: JSON.stringify(message) },
-        ],
-    });
-    res.status(200).send('Mensaje publicado con éxito');
-});
-
 
 const consumer = kafka.consumer({ groupId: 'science-group' });
 const run = async () => {

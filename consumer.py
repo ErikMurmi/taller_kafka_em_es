@@ -17,7 +17,7 @@ def process_message(msg):
 def consume_messages(consumer_config):
     try:
         consumer = Consumer(consumer_config)
-        consumer.subscribe(["science"])
+        consumer.subscribe(["sports"])
 
         while True:
             msg = consumer.poll(1.0)

@@ -23,6 +23,17 @@ app.post('/publish', async (req, res) => {
     res.status(200).send('Mensaje publicado con éxito');
 });
 
+app.post('/publish_sports', async (req, res) => {
+    const message = req.body;
+    await producer.send({
+        topic: 'sports',
+        messages: [
+            { value: JSON.stringify(message) },
+        ],
+    });
+    res.status(200).send('Mensaje publicado con éxito');
+});
+
 const run = async () => {
     // Consumidor
     await consumer.connect();
